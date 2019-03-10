@@ -27,7 +27,7 @@ pacman-mirrors -c China
 install_base(){
     check_software wget "pacman -S --noconfirm"
     check_software ibus-rime "pacman -S --noconfirm"
-    check_software yaourt "pacman -S --noconfirm"
+    check_software yay "pacman -S --noconfirm"
     check_software base-devel "pacman -S --noconfirm"
     check_software vim "pacman -S --noconfirm"
     check_software pandoc "pacman -S --noconfirm"
@@ -36,11 +36,6 @@ install_base(){
 }
 
 install_base
-# 更换gnome主题
-git clone https://github.com/pangyouzhen/manjaro_setting
-rm -rf /usr/share/themes/*
-cp -r ./gnome/Xenlism-Minimalism /usr/share/themes
-/etc/init.d/gdm restart
 
 
 # 更改python镜像文件
