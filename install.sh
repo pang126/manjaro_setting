@@ -25,14 +25,16 @@ check_software() {
 pacman-mirrors -c China
 
 install_base(){
-    check_software wget "pacman -S --noconfirm"
+    check_software git "pacman -S --noconfirm"
+    check_software axel "pacman -S --noconfirm"
     check_software ibus-rime "pacman -S --noconfirm"
     check_software yay "pacman -S --noconfirm"
     check_software base-devel "pacman -S --noconfirm"
     check_software vim "pacman -S --noconfirm"
     check_software pandoc "pacman -S --noconfirm"
-    check_software deluge "pacman -S --noconfirm"
     check_software chromium "pacman -S --noconfirm"
+    check_software typora "pacman -S --noconfirm"
+    check_software docker "pacman -S --noconfirm"
 }
 
 install_base
@@ -105,7 +107,7 @@ update_system() {
 }
 # 安装conda并创建虚拟环境
 install_conda(){
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    axel -n 100 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     yes | bash Miniconda3-latest-Linux-x86_64.sh
     conda create -n jupyterpy python=3.6
     source activate jupyterpy
@@ -118,4 +120,7 @@ install_conda(){
     source deactivate
     }
 
+# 需要bus-rime配置文件
+
+# docker 配置文件 & docker pull 镜像
 install_conda
